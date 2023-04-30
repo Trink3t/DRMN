@@ -3,7 +3,12 @@ guid: d8c2004f7e4d32f479350109e3254195
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - modalPanel: {instanceID: 0}
+  - titleText: {instanceID: 0}
+  - messageText: {instanceID: 0}
+  - confirmButton: {instanceID: 0}
+  - cancelButton: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
