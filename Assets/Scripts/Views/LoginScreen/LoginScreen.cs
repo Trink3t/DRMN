@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class LoginScreen : MonoBehaviour
@@ -9,6 +10,7 @@ public class LoginScreen : MonoBehaviour
     
     public ViewManager viewManager;
     public ModalWindow modalWindow;
+    public AccountController accountController = AccountController.Instance;
 
     public string username {get; private set;}
     public string password {get; private set;}

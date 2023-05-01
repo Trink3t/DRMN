@@ -2,41 +2,41 @@ using System.Collections;
 
 public class AccountRecoveryState : State<LoginScreen>
 {
-    AccountController AccountController = AccountController.Instance;
-    public override void Enter(LoginScreen owner)
+    public override void Enter(LoginScreen loginScreen)
     {
-        owner.viewManager.Show("EnterEmail");
+        loginScreen.viewManager.Show("EnterEmail");
+        
     }
 
-    public override void Execute(LoginScreen owner)
+    public override void Execute(LoginScreen loginScreen)
     {
-        if (owner.isSendOTPButtonClicked)
+        if (loginScreen.isSendOTPButtonClicked)
         {
-            owner.isSendOTPButtonClicked = false;
-            //Execute Sending OTP code to mail.
+            loginScreen.isSendOTPButtonClicked = false;
 
-            owner.viewManager.Show("EnterOTP");
+            //TODO: Verify Email and send OTP code if true;
+            loginScreen.viewManager.Show("EnterOTP");
         }
 
-        if (owner.isVerifyOTPButtonClicked)
+        if (loginScreen.isVerifyOTPButtonClicked)
         {
-            owner.isVerifyOTPButtonClicked = false;
-            //Execute verifying OTP Code
+            loginScreen.isVerifyOTPButtonClicked = false;
+            //TODO: Verify OTP Code and proceed to create password;
 
-            owner.viewManager.Show("EnterNewPassword");
+            loginScreen.viewManager.Show("EnterNewPassword");
         }
 
-        if (owner.isResetPasswordButtonClicked)
+        if (loginScreen.isResetPasswordButtonClicked)
         {
-            owner.isResetPasswordButtonClicked = false;
-            //Execute reset password;
+            loginScreen.isResetPasswordButtonClicked = false;
+            //TODO: Change password and return to login screen if true;
 
-            owner.StateMachine.ChangeState(null);
-            owner.viewManager.ShowBase();
+            loginScreen.StateMachine.ChangeState(null);
+            loginScreen.viewManager.ShowBase();
         }
     }
 
-    public override void Exit(LoginScreen owner)
+    public override void Exit(LoginScreen loginScreen)
     {
         
     }

@@ -15,22 +15,24 @@ public class ModalWindow : MonoBehaviour
     private void Awake() {
         confirmButton.onClick.AddListener(OnConfirmActionClicked);
         cancelButton.onClick.AddListener(OnCancelActionClicked);
-
         modalPanel.SetActive(false);
     }
 
-    public void Show(string title = null, string message = null, System.Action onConfirm = null, System.Action onCancel = null)
+    public void Show(string title = null, string message = null, System.Action onConfirm = null, System.Action onCancel = null, string confirmButtonText = "Confirm", string cancelButtonText = "Cancel")
     {
         this.onConfirm = onConfirm;
         this.onCancel = onCancel;
+
+        confirmButton.GetComponentInChildren<TMP_Text>().text = confirmButtonText;
+        cancelButton.GetComponentInChildren<TMP_Text>().text = cancelButtonText;
 
         titleText.text = title;
         messageText.text = message;
 
         titleText.gameObject.SetActive(title != null);
         messageText.gameObject.SetActive(message != null);
-        confirmButton.gameObject.SetActive(onConfirm != null);
-        cancelButton.gameObject.SetActive(onCancel != null);
+        confirmButton.gameObject.SetActive(onConfirm != null || confirmButtonText !=null);
+        cancelButton.gameObject.SetActive(onCancel != null || cancelButtonText != null);
 
         modalPanel.SetActive(true);
     }
